@@ -20,6 +20,10 @@ var Block = cc.Node.extend({
     },
     updateNumber: function(num){
         this.number = num;
-        this.label.setString(this.number.toString());
+        var text = "";
+        if(this.number > 0){
+            text = this.number.toString();
+        }
+        this.label.setString(text);
     }
 });

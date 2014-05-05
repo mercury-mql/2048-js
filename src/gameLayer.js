@@ -128,46 +128,7 @@ var GameLayer = cc.Layer.extend({
     },
     onMoveUp: function(){
         cc.log("Move Up");
-        for (var col = 0; col < 4; col++)
-        {
-            var prefixIndex = -1;
-            var prefixValue = 0;
-            var currentValue = 0;
-            var prefixDo = false;
-            for (var row=0; row<4; row++)
-            {
-                currentValue = this.blockArr[row*4+col].number;
-                if (currentValue > 0)
-                {
-                    if (prefixIndex < 0)
-                    {
-                        this.blockArr[row*4+col].updateNumber(0);
-                        this.blockArr[0*4+col].updateNumber(currentValue);
-                        prefixIndex = 0;
-                        prefixValue = currentValue;
-                        continue;
-                    }
-                    if (!prefixDo && currentValue == prefixValue)
-                    {
-                        this.blockArr[row*4+col].updateNumber(0);
-                        this.blockArr[prefixIndex*4+col].updateNumber(2*currentValue);
-                        prefixValue = 2*currentValue;
-                        prefixDo = true;
-                    }
-                    else
-                    {
-                        this.blockArr[row*4+col].updateNumber(0);
-                        this.blockArr[(prefixIndex+1)*4+col].updateNumber(currentValue);
-                        prefixIndex += 1;
-                        prefixValue = currentValue;
-                        prefixDo = false;
-                    }
-                }
-            }
-        }
-    },
-    onMoveDown: function(){
-        cc.log("Move Down");
+
         for (var col = 0; col < 4; col++)
         {
             var prefixIndex = -1;
@@ -184,7 +145,7 @@ var GameLayer = cc.Layer.extend({
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[(4-1)*4+col].updateNumber(currentValue);
                         prefixIndex = 4-1;
-                        prefixValue = this.blockarr[prefixIndex*4+col].number;
+                        prefixValue = currentValue;
                         continue;
                     }
                     if (!prefixDo && currentValue == prefixValue)
@@ -199,6 +160,46 @@ var GameLayer = cc.Layer.extend({
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[(prefixIndex-1)*4+col].updateNumber(currentValue);
                         prefixIndex -= 1;
+                        prefixValue = currentValue;
+                        prefixDo = false;
+                    }
+                }
+            }
+        }
+    },
+    onMoveDown: function(){
+        cc.log("Move Down");
+        for (var col = 0; col < 4; col++)
+        {
+            var prefixIndex = -1;
+            var prefixValue = 0;
+            var currentValue = 0;
+            var prefixDo = false;
+            for (var row=0; row<4; row++)
+            {
+                currentValue = this.blockArr[row*4+col].number;
+                if (currentValue > 0)
+                {
+                    if (prefixIndex < 0)
+                    {
+                        this.blockArr[row*4+col].updateNumber(0);
+                        this.blockArr[0+col].updateNumber(currentValue);
+                        prefixIndex = 0;
+                        prefixValue = currentValue;
+                        continue;
+                    }
+                    if (!prefixDo && currentValue == prefixValue)
+                    {
+                        this.blockArr[row*4+col].updateNumber(0);
+                        this.blockArr[prefixIndex*4+col].updateNumber(2*currentValue);
+                        prefixValue = 2*currentValue;
+                        prefixDo = true;
+                    }
+                    else
+                    {
+                        this.blockArr[row*4+col].updateNumber(0);
+                        this.blockArr[(prefixIndex+1)*4+col].updateNumber(currentValue);
+                        prefixIndex += 1;
                         prefixValue = currentValue;
                         prefixDo = false;
                     }
