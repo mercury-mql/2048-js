@@ -85,6 +85,7 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
+        this.addOneRandom();
     },
     onMoveRight: function(){
         cc.log("Move Right");
@@ -125,6 +126,7 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
+        this.addOneRandom();
     },
     onMoveUp: function(){
         cc.log("Move Up");
@@ -166,6 +168,7 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
+        this.addOneRandom();
     },
     onMoveDown: function(){
         cc.log("Move Down");
@@ -206,6 +209,18 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
+        this.addOneRandom();
+    },
+    getEmptyArr: function(){
+        var emptyArr = new Array();
+        for(var i=0; i<4; i++){
+            for(var j=0; j<4; j++){
+                if(this.blockArr[i*4+j].number == 0){
+                    emptyArr.push(i*4+j);
+                }
+            }
+        }
+        return emptyArr;
     },
     createBlocks: function(){
         var blockSz = Math.min(this.winSz.width/5, this.winSz.height/5);
@@ -213,7 +228,7 @@ var GameLayer = cc.Layer.extend({
         var yOffset = (this.winSz.height - 4*(blockSz-10))/2;
         for(var i=0; i<4; i++){
             for(var j=0; j<4; j++){
-                var block = new Block(2, blockSz-10, blockSz-10);
+                var block = new Block(0, blockSz-10, blockSz-10);
                 block.attr({
                     x: j*blockSz + xOffset,
                     y: i*blockSz + yOffset
@@ -222,6 +237,27 @@ var GameLayer = cc.Layer.extend({
                 this.blockArr[i*4+j] = block;
             }
         }
+        this.addTwoRandom();
+    },
+    addTwoRandom: function(){
+      var emptyArr = this.getEmptyArr();
+      var first = Math.round(Math.random()*emptyArr.length);
+      var second = Math.round(Math.random()*emptyArr.length);
+      while(emptyArr.length > 1 && first == second){
+          first = Math.round(Math.random()*emptyArr.length);
+          second = Math.round(Math.random()*emptyArr.length);
+      }
+      var firstIndex = emptyArr[first];
+      var secondIndex = emptyArr[second];
+      this.blockArr[firstIndex].updateNumber(2);
+      this.blockArr[secondIndex].updateNumber(2);
+    },
+    addOneRandom: function(){
+        var emptyArr = this.getEmptyArr();
+        var index = Math.round(Math.random()*emptyArr.length);
+        var blockIndex = emptyArr[index];
+        var number = cc.random0To1() > 0.8 ? 4 : 2;
+        this.blockArr[blockIndex].updateNumber(number);
     },
     printBlocks: function(){
         var str = "\n";

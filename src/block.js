@@ -12,7 +12,11 @@ var Block = cc.Node.extend({
         this.addChild(this.bg);
 
         this.number = num;
-        this.label = cc.LabelTTF.create(this.number.toString(), "Arial", 30);
+        var text = "";
+        if(this.number > 0){
+            text = this.number.toString();
+        }
+        this.label = cc.LabelTTF.create(text, "Arial", 30);
         this.label.setPosition(cc.p(w/2, h/2));
         this.addChild(this.label);
 
