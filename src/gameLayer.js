@@ -12,7 +12,7 @@ var GameLayer = cc.Layer.extend({
     ctor: function(){
         this._super();
         this.winSz = cc.director.getWinSize();
-        this.bg = cc.LayerColor.create(cc.color(200, 190, 180, 255),
+        this.bg = cc.LayerColor.create(cc.color(194, 166, 132, 255),
             this.winSz.width,
             this.winSz.height);
         this.addChild(this.bg);
