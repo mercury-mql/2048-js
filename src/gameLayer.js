@@ -75,6 +75,9 @@ var GameLayer = cc.Layer.extend({
                         this.blockArr[row*4+prefixIndex].updateNumber(2*prefixValue);
                         prefixValue = 2*prefixValue;
                         prefixDo = true;
+                        if( prefixValue == 2048 ){
+                            this.success();
+                        }
                     }else{
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[row*4+prefixIndex+1].updateNumber(currentValue);
@@ -114,6 +117,9 @@ var GameLayer = cc.Layer.extend({
                         this.blockArr[row*4+prefixIndex].updateNumber(2*currentValue);
                         prefixValue = 2*currentValue;
                         prefixDo = true;
+                        if( prefixValue == 2048 ){
+                            this.success();
+                        }
                     }
                     else
                     {
@@ -156,6 +162,9 @@ var GameLayer = cc.Layer.extend({
                         this.blockArr[prefixIndex*4+col].updateNumber(2*currentValue);
                         prefixValue = 2*currentValue;
                         prefixDo = true;
+                        if( prefixValue == 2048 ){
+                            this.success();
+                        }
                     }
                     else
                     {
@@ -197,6 +206,9 @@ var GameLayer = cc.Layer.extend({
                         this.blockArr[prefixIndex*4+col].updateNumber(2*currentValue);
                         prefixValue = 2*currentValue;
                         prefixDo = true;
+                        if( prefixValue == 2048 ){
+                            this.success();
+                        }
                     }
                     else
                     {
@@ -254,10 +266,20 @@ var GameLayer = cc.Layer.extend({
     },
     addOneRandom: function(){
         var emptyArr = this.getEmptyArr();
+        if(emptyArr.length == 0){
+            this.gameOver();
+            return;
+        }
         var index = Math.round(Math.random()*emptyArr.length-1);
         var blockIndex = emptyArr[index];
         var number = cc.random0To1() > 0.8 ? 4 : 2;
         this.blockArr[blockIndex].updateNumber(number);
+    },
+    gameOver: function(){
+        cc.log("Game over");
+    },
+    success: function(){
+        cc.log("Congradulations");
     },
     printBlocks: function(){
         var str = "\n";
