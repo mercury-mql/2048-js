@@ -8,10 +8,15 @@ var Block = cc.Node.extend({
     number: 0,
     ctor: function(num, w, h){
         this._super();
-        this.bg = cc.LayerColor.create(cc.color(180, 170, 160, 255), w, h);
+        this.number = num;
+        //this.bg = cc.LayerColor.create(cc.color(180, 170, 160, 255), w, h);
+        this.ignoreAnchorPointForPosition(false);
+        this.setAnchorPoint(cc.p(0.5, 0.5));
+        var frameName = "#p" + this.number.toString() + ".png";
+        this.bg = cc.Sprite.create(frameName);
+        this.bg.setPosition(cc.p(w/2, h/2));
         this.addChild(this.bg);
 
-        this.number = num;
         var text = "";
         if(this.number > 0){
             text = this.number.toString();
@@ -29,5 +34,9 @@ var Block = cc.Node.extend({
             text = this.number.toString();
         }
         this.label.setString(text);
+
+        var frameName = "p" + this.number.toString() + ".png";
+        var frame = cc.spriteFrameCache.getSpriteFrame(frameName);
+        this.bg.setSpriteFrame(frame)
     }
 });

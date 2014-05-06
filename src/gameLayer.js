@@ -241,11 +241,11 @@ var GameLayer = cc.Layer.extend({
     },
     addTwoRandom: function(){
       var emptyArr = this.getEmptyArr();
-      var first = Math.round(Math.random()*emptyArr.length);
-      var second = Math.round(Math.random()*emptyArr.length);
+      var first = Math.round(Math.random()*emptyArr.length-1);
+      var second = Math.round(Math.random()*emptyArr.length-1);
       while(emptyArr.length > 1 && first == second){
-          first = Math.round(Math.random()*emptyArr.length);
-          second = Math.round(Math.random()*emptyArr.length);
+          first = Math.round(Math.random()*emptyArr.length-1);
+          second = Math.round(Math.random()*emptyArr.length-1);
       }
       var firstIndex = emptyArr[first];
       var secondIndex = emptyArr[second];
@@ -254,7 +254,7 @@ var GameLayer = cc.Layer.extend({
     },
     addOneRandom: function(){
         var emptyArr = this.getEmptyArr();
-        var index = Math.round(Math.random()*emptyArr.length);
+        var index = Math.round(Math.random()*emptyArr.length-1);
         var blockIndex = emptyArr[index];
         var number = cc.random0To1() > 0.8 ? 4 : 2;
         this.blockArr[blockIndex].updateNumber(number);
