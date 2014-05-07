@@ -68,6 +68,7 @@ var GameLayer = cc.Layer.extend({
     },
     onMoveLeft: function(){
         cc.log("Move Left");
+        var shoudAdd = false;
         for (var row = 0; row < 4; row++){
             var prefixIndex = -1;
             var prefixValue = 0;
