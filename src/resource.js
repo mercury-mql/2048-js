@@ -12,7 +12,7 @@ var g_resources = [
     res.CloseNormal_png,
     res.CloseSelected_png,
     res.Elements_png,
-    
+
     //plist
     res.Elements_plist
     //fnt
