@@ -3,7 +3,9 @@ var res = {
     CloseNormal_png : "res/CloseNormal.png",
     CloseSelected_png : "res/CloseSelected.png",
     Elements_png : "res/elements_out.png",
-    Elements_plist : "res/elements_out.plist"
+    Elements_plist : "res/elements_out.plist",
+    Background_png : "res/bk-little.png",
+    SecondBackground_png : "res/second-bk.png"
 };
 
 var g_resources = [
@@ -12,6 +14,8 @@ var g_resources = [
     res.CloseNormal_png,
     res.CloseSelected_png,
     res.Elements_png,
+    res.Background_png,
+    res.SecondBackground_png,
 
     //plist
     res.Elements_plist
