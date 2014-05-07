@@ -4,7 +4,8 @@ cc.game.onStart = function(){
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
         cc.spriteFrameCache.addSpriteFrames(res.Elements_plist);
-        cc.director.runScene(new GameScene());
+        cc.spriteFrameCache.addSpriteFrames(res.Welcome_plist);
+        cc.director.runScene(new WelcomeScene());
     }, this);
 };
 cc.game.run();

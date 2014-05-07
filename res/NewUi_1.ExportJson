@@ -58,7 +58,7 @@
               "sizeType": 0,
               "tag": 5,
               "touchAble": false,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 250,
               "x": 397,
@@ -71,7 +71,7 @@
               "fileNameData": {
                 "path": "logo.png",
                 "plistFile": "",
-                "resourceType": 0
+                "resourceType": 1
               },
               "scale9Enable": false,
               "scale9Height": 250,
@@ -112,7 +112,7 @@
               "sizeType": 0,
               "tag": 6,
               "touchAble": true,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 300,
               "x": 404,
@@ -134,7 +134,7 @@
               "normalData": {
                 "path": "statistic.png",
                 "plistFile": "",
-                "resourceType": 0
+                "resourceType": 1
               },
               "pressed": null,
               "pressedData": {
@@ -185,7 +185,7 @@
               "sizeType": 0,
               "tag": 7,
               "touchAble": true,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 300,
               "x": 406,
@@ -207,7 +207,7 @@
               "normalData": {
                 "path": "start.png",
                 "plistFile": "",
-                "resourceType": 0
+                "resourceType": 1
               },
               "pressed": null,
               "pressedData": {
@@ -258,7 +258,7 @@
               "sizeType": 0,
               "tag": 8,
               "touchAble": true,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 80,
               "x": 69,
@@ -280,7 +280,7 @@
               "normalData": {
                 "path": "google.png",
                 "plistFile": "",
-                "resourceType": 0
+                "resourceType": 1
               },
               "pressed": null,
               "pressedData": {
@@ -331,7 +331,7 @@
               "sizeType": 0,
               "tag": 9,
               "touchAble": true,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 80,
               "x": 69,
@@ -353,7 +353,7 @@
               "normalData": {
                 "path": "twitter.png",
                 "plistFile": "",
-                "resourceType": 0
+                "resourceType": 1
               },
               "pressed": null,
               "pressedData": {
@@ -404,7 +404,7 @@
               "sizeType": 0,
               "tag": 10,
               "touchAble": true,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 80,
               "x": 69,
@@ -426,7 +426,7 @@
               "normalData": {
                 "path": "weixin.png",
                 "plistFile": "",
-                "resourceType": 0
+                "resourceType": 1
               },
               "pressed": null,
               "pressedData": {
@@ -477,7 +477,7 @@
               "sizeType": 0,
               "tag": 11,
               "touchAble": true,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 80,
               "x": 69,
@@ -499,7 +499,7 @@
               "normalData": {
                 "path": "weibo.png",
                 "plistFile": "",
-                "resourceType": 0
+                "resourceType": 1
               },
               "pressed": null,
               "pressedData": {
@@ -550,7 +550,7 @@
               "sizeType": 0,
               "tag": 12,
               "touchAble": true,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 220,
               "x": 681,
@@ -572,7 +572,7 @@
               "normalData": {
                 "path": "user-2in1.png",
                 "plistFile": "",
-                "resourceType": 0
+                "resourceType": 1
               },
               "pressed": null,
               "pressedData": {
@@ -623,7 +623,7 @@
               "sizeType": 0,
               "tag": 13,
               "touchAble": true,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 60,
               "x": 759,
@@ -645,7 +645,7 @@
               "normalData": {
                 "path": "setup.png",
                 "plistFile": "",
-                "resourceType": 0
+                "resourceType": 1
               },
               "pressed": null,
               "pressedData": {
@@ -696,7 +696,7 @@
               "sizeType": 0,
               "tag": 14,
               "touchAble": true,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 60,
               "x": 759,
@@ -718,7 +718,7 @@
               "normalData": {
                 "path": "rank.png",
                 "plistFile": "",
-                "resourceType": 0
+                "resourceType": 1
               },
               "pressed": null,
               "pressedData": {
@@ -766,7 +766,7 @@
           "sizeType": 0,
           "tag": 4,
           "touchAble": true,
-          "useMergedTexture": false,
+          "useMergedTexture": true,
           "visible": true,
           "width": 800,
           "x": -1,
@@ -776,7 +776,7 @@
           "backGroundImageData": {
             "path": "bk-little.png",
             "plistFile": "",
-            "resourceType": 0
+            "resourceType": 1
           },
           "backGroundScale9Enable": false,
           "bgColorB": 255,
@@ -831,7 +831,7 @@
       "sizeType": 0,
       "tag": 3,
       "touchAble": true,
-      "useMergedTexture": false,
+      "useMergedTexture": true,
       "visible": true,
       "width": 800,
       "x": 0,

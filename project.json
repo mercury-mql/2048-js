@@ -8,12 +8,13 @@
     "renderMode" : 0,
     "engineDir":"frameworks/cocos2d-html5",
 
-    "modules" : ["cocos2d"],
+    "modules" : ["cocos2d", "extensions"],
 
     "jsList" : [
         "src/resource.js",
         "src/app.js",
         "src/gameLayer.js",
-        "src/block.js"
+        "src/block.js",
+        "src/welcomeLayer.js"
     ]
 }
