@@ -14,8 +14,8 @@ var Block = cc.Node.extend({
         this.setAnchorPoint(cc.p(0.5, 0.5));
         var frameName = "s" + this.number.toString() + ".png";
         var frameSprite = cc.spriteFrameCache.getSpriteFrame(frameName);
-        //this.bg = cc.Sprite.create(frameSprite);
-        this.bg = cc.Sprite.create(res.Test_png);
+        this.bg = cc.Sprite.create(frameSprite);
+        //this.bg = cc.Sprite.create(res.Test_png);
         this.bg.setPosition(cc.p(w/2, h/2));
         this.addChild(this.bg);
 
