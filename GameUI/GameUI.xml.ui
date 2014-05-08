@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectDir>D:\xampp\htdocs\cocos2d-js\projects\2048-js\GameUI</ProjectDir>
+  <Version>1.4.0.0</Version>
+  <Resources>D:\xampp\htdocs\cocos2d-js\projects\2048-js\GameUI\Resources</Resources>
+  <Name>GameUI</Name>
+  <JsonFileName>GameUI.json</JsonFileName>
+  <JsonFolder>D:\xampp\htdocs\cocos2d-js\projects\2048-js\GameUI\Json</JsonFolder>
+  <JsonList>
+    <string>GameUI_1.json</string>
+  </JsonList>
+  <CanvasSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </CanvasSize>
+  <filePath>D:\xampp\htdocs\cocos2d-js\projects\2048-js\GameUI\GameUI.xml.ui</filePath>
+  <ProjectType>UIProject</ProjectType>
+  <ResRelativePath />
+  <imageFileList>
+    <string>GameUI0.plist</string>
+  </imageFileList>
+  <imagePngList>
+    <string>GameUI0.png</string>
+  </imagePngList>
+  <JsonSuffix>.json</JsonSuffix>
+  <CurrentUIJson>GameUI_1.json</CurrentUIJson>
+</UIProject>

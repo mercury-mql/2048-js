@@ -49,7 +49,7 @@ var WelcomeLayer = cc.Layer.extend({
     start : function(sender, type){
         if(type == ccui.Widget.TOUCH_ENDED){
             cc.log("Start");
-            cc.director.replaceScene(new GameScene());
+            cc.director.runScene(new GameScene());
         }
 
     },
