@@ -68,7 +68,7 @@ var GameLayer = cc.Layer.extend({
     },
     onMoveLeft: function(){
         cc.log("Move Left");
-        var shoudAdd = false;
+        var shouldAdd = false;
         for (var row = 0; row < 4; row++){
             var prefixIndex = -1;
             var prefixValue = 0;
@@ -82,6 +82,9 @@ var GameLayer = cc.Layer.extend({
                         this.blockArr[row*4+0].updateNumber(currentValue);
                         prefixIndex = 0;
                         prefixValue = currentValue;
+                        if( col != 0 ){
+                            shoudlAdd = true;
+                        }
                         continue;
                     }
                     if (!prefixDo && currentValue == prefixValue){
@@ -89,12 +92,16 @@ var GameLayer = cc.Layer.extend({
                         this.blockArr[row*4+prefixIndex].updateNumber(2*prefixValue);
                         prefixValue = 2*prefixValue;
                         prefixDo = true;
+                        shouldAdd = true;
                         if( prefixValue == 2048 ){
                             this.success();
                         }
                     }else{
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[row*4+prefixIndex+1].updateNumber(currentValue);
+                        if( col != prefixIndex+1 ){
+                            shouldAdd = true;
+                        }
                         prefixIndex += 1;
                         prefixValue = currentValue;
                         prefixDo = false;
@@ -102,10 +109,13 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
-        this.addOneRandom();
+        if(shouldAdd){
+            this.addOneRandom();
+        }
     },
     onMoveRight: function(){
         cc.log("Move Right");
+        var shouldAdd = false;
         for (var row = 0; row < 4; row++)
         {
             var prefixIndex = -1;
@@ -121,6 +131,9 @@ var GameLayer = cc.Layer.extend({
                     {
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[row*4+4-1].updateNumber(currentValue);
+                        if( col != 3 ){
+                            shouldAdd = true;
+                        }
                         prefixIndex = 4-1;
                         prefixValue = this.blockArr[row*4+prefixIndex].number;
                         continue;
@@ -131,6 +144,7 @@ var GameLayer = cc.Layer.extend({
                         this.blockArr[row*4+prefixIndex].updateNumber(2*currentValue);
                         prefixValue = 2*currentValue;
                         prefixDo = true;
+                        shouldAdd = true;
                         if( prefixValue == 2048 ){
                             this.success();
                         }
@@ -139,6 +153,9 @@ var GameLayer = cc.Layer.extend({
                     {
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[row*4+prefixIndex-1].updateNumber(currentValue);
+                        if( col != prefixIndex-1 ){
+                            shouldAdd = true;
+                        }
                         prefixIndex -= 1;
                         prefixValue = currentValue;
                         prefixDo = false;
@@ -146,11 +163,13 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
-        this.addOneRandom();
+        if(shouldAdd){
+            this.addOneRandom();
+        }
     },
     onMoveUp: function(){
         cc.log("Move Up");
-
+        var shouldAdd = false;
         for (var col = 0; col < 4; col++)
         {
             var prefixIndex = -1;
@@ -166,6 +185,9 @@ var GameLayer = cc.Layer.extend({
                     {
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[(4-1)*4+col].updateNumber(currentValue);
+                        if( row != 3 ){
+                            shouldAdd = true;
+                        }
                         prefixIndex = 4-1;
                         prefixValue = currentValue;
                         continue;
@@ -176,6 +198,7 @@ var GameLayer = cc.Layer.extend({
                         this.blockArr[prefixIndex*4+col].updateNumber(2*currentValue);
                         prefixValue = 2*currentValue;
                         prefixDo = true;
+                        shouldAdd = true;
                         if( prefixValue == 2048 ){
                             this.success();
                         }
@@ -184,6 +207,9 @@ var GameLayer = cc.Layer.extend({
                     {
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[(prefixIndex-1)*4+col].updateNumber(currentValue);
+                        if( (prefixIndex-1) != row ){
+                            shouldAdd = true;
+                        }
                         prefixIndex -= 1;
                         prefixValue = currentValue;
                         prefixDo = false;
@@ -191,10 +217,13 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
-        this.addOneRandom();
+        if(shouldAdd){
+            this.addOneRandom();
+        }
     },
     onMoveDown: function(){
         cc.log("Move Down");
+        var shouldAdd = false;
         for (var col = 0; col < 4; col++)
         {
             var prefixIndex = -1;
@@ -210,6 +239,9 @@ var GameLayer = cc.Layer.extend({
                     {
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[0+col].updateNumber(currentValue);
+                        if(row != 0){
+                            shouldAdd = true;
+                        }
                         prefixIndex = 0;
                         prefixValue = currentValue;
                         continue;
@@ -220,6 +252,7 @@ var GameLayer = cc.Layer.extend({
                         this.blockArr[prefixIndex*4+col].updateNumber(2*currentValue);
                         prefixValue = 2*currentValue;
                         prefixDo = true;
+                        shouldAdd = true;
                         if( prefixValue == 2048 ){
                             this.success();
                         }
@@ -228,6 +261,9 @@ var GameLayer = cc.Layer.extend({
                     {
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[(prefixIndex+1)*4+col].updateNumber(currentValue);
+                        if( row != (prefixIndex+1) ){
+                            shouldAdd = true;
+                        }
                         prefixIndex += 1;
                         prefixValue = currentValue;
                         prefixDo = false;
@@ -235,7 +271,9 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
-        this.addOneRandom();
+        if(shouldAdd){
+            this.addOneRandom();
+        }
     },
     getEmptyArr: function(){
         var emptyArr = new Array();
