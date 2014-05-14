@@ -10,6 +10,8 @@ var GameLayer = cc.Layer.extend({
     dstx: 0,
     dsty: 0,
     blockArr: null,
+    score: 0,
+    maxnum: 2,
     ctor: function(){
         this._super();
         this.winSz = cc.director.getWinSize();
@@ -23,7 +25,7 @@ var GameLayer = cc.Layer.extend({
         this.sbg = cc.Sprite.create("#second-bk.png");
         this.sbg.attr({
             x : this.winSz.width/2,
-            y : this.winSz.height/2 + 10
+            y : this.winSz.height/2 - 25
         });
         this.addChild(this.sbg);
 
@@ -87,6 +89,8 @@ var GameLayer = cc.Layer.extend({
                     if (!prefixDo && currentValue == prefixValue){
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[row*4+prefixIndex].updateNumber(2*prefixValue);
+                        this.score = 2 * prefixValue;
+                        this.maxnum = (this.maxnum < this.score) ? this.score : this.maxnum;
                         prefixValue = 2*prefixValue;
                         prefixDo = true;
                         shouldAdd = true;
@@ -106,9 +110,7 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
-        if(shouldAdd){
-            this.addOneRandom();
-        }
+        this.addOneRandom(shouldAdd);
     },
     onMoveRight: function(){
         cc.log("Move Right");
@@ -139,6 +141,8 @@ var GameLayer = cc.Layer.extend({
                     {
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[row*4+prefixIndex].updateNumber(2*currentValue);
+                        this.score = 2 * prefixValue;
+                        this.maxnum = (this.maxnum < this.score) ? this.score : this.maxnum;
                         prefixValue = 2*currentValue;
                         prefixDo = true;
                         shouldAdd = true;
@@ -160,9 +164,7 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
-        if(shouldAdd){
-            this.addOneRandom();
-        }
+        this.addOneRandom(shouldAdd);
     },
     onMoveUp: function(){
         cc.log("Move Up");
@@ -193,6 +195,8 @@ var GameLayer = cc.Layer.extend({
                     {
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[prefixIndex*4+col].updateNumber(2*currentValue);
+                        this.score = 2 * prefixValue;
+                        this.maxnum = (this.maxnum < this.score) ? this.score : this.maxnum;
                         prefixValue = 2*currentValue;
                         prefixDo = true;
                         shouldAdd = true;
@@ -214,9 +218,8 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
-        if(shouldAdd){
-            this.addOneRandom();
-        }
+        this.addOneRandom(shouldAdd);
+
     },
     onMoveDown: function(){
         cc.log("Move Down");
@@ -247,6 +250,8 @@ var GameLayer = cc.Layer.extend({
                     {
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[prefixIndex*4+col].updateNumber(2*currentValue);
+                        this.score = 2 * prefixValue;
+                        this.maxnum = (this.maxnum < this.score) ? this.score : this.maxnum;
                         prefixValue = 2*currentValue;
                         prefixDo = true;
                         shouldAdd = true;
@@ -268,9 +273,8 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
-        if(shouldAdd){
-            this.addOneRandom();
-        }
+        this.addOneRandom(shouldAdd);
+
     },
     getEmptyArr: function(){
         var emptyArr = new Array();
@@ -292,7 +296,7 @@ var GameLayer = cc.Layer.extend({
                 var block = new Block(0, blockSz-10, blockSz-10);
                 block.attr({
                     x: j*blockSz + xOffset,
-                    y: i*blockSz + yOffset
+                    y: i*blockSz + yOffset/4
                 });
                 this.addChild(block);
                 this.blockArr[i*4+j] = block;
@@ -313,14 +317,19 @@ var GameLayer = cc.Layer.extend({
       this.blockArr[firstIndex].updateNumber(2);
       this.blockArr[secondIndex].updateNumber(2);
     },
-    addOneRandom: function(){
+    addOneRandom: function(shouldAdd){
         var emptyArr = this.getEmptyArr();
         if(emptyArr.length == 0){
             this.gameOver();
             return;
         }
+        if(shouldAdd == false){
+            return
+        }
         var index = Math.round(Math.random()*emptyArr.length-1);
+        index = index < 0 ? 0 : index;
         var blockIndex = emptyArr[index];
+        cc.log("len is %d, index is %d, blockIndex is %d", emptyArr.length, index, blockIndex);
         var number = cc.random0To1() > 0.8 ? 4 : 2;
         this.blockArr[blockIndex].updateNumber(number);
     },
