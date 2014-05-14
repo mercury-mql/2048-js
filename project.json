@@ -15,6 +15,7 @@
         "src/app.js",
         "src/gameLayer.js",
         "src/block.js",
-        "src/welcomeLayer.js"
+        "src/welcomeLayer.js",
+        "src/gameoverLayer.js"
     ]
 }

@@ -8,6 +8,7 @@
   <JsonFolder>D:\xampp\htdocs\cocos2d-js-v3\projects\helloworld\NewUi\Json</JsonFolder>
   <JsonList>
     <string>NewUi_1.json</string>
+    <string>NewUi_2.json</string>
   </JsonList>
   <CanvasSize>
     <Width>800</Width>
@@ -18,10 +19,12 @@
   <ResRelativePath />
   <imageFileList>
     <string>NewUi0.plist</string>
+    <string>NewUi1.plist</string>
   </imageFileList>
   <imagePngList>
     <string>NewUi0.png</string>
+    <string>NewUi1.png</string>
   </imagePngList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>NewUi_1.json</CurrentUIJson>
+  <CurrentUIJson>NewUi_2.json</CurrentUIJson>
 </UIProject>

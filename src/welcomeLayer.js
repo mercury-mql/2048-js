@@ -9,7 +9,7 @@ var WelcomeLayer = cc.Layer.extend({
         this.mainNode = cc.Node.create();
         this.addChild(this.mainNode);
 
-        var root = ccs.uiReader.widgetFromJsonFile(res.Welcome_json);
+        var root = ccs.uiReader.widgetFromJsonFile(res.Ui1_json);
         this.mainNode.addChild(root);
 
         var statisticBtn = ccui.helper.seekWidgetByName(root, "statistic");

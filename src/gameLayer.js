@@ -13,17 +13,14 @@ var GameLayer = cc.Layer.extend({
     ctor: function(){
         this._super();
         this.winSz = cc.director.getWinSize();
-        //this.bg = cc.LayerColor.create(cc.color(194, 166, 132, 255),
-        //    this.winSz.width,
-        //    this.winSz.height);
-        this.bg = cc.Sprite.create(res.Background_png);
+        this.bg = cc.Sprite.create("#bk-little.png");
         this.bg.attr({
             x : this.winSz.width/2,
             y : this.winSz.height/2
         });
         this.addChild(this.bg);
 
-        this.sbg = cc.Sprite.create(res.SecondBackground_png);
+        this.sbg = cc.Sprite.create("#second-bk.png");
         this.sbg.attr({
             x : this.winSz.width/2,
             y : this.winSz.height/2 + 10
@@ -329,6 +326,7 @@ var GameLayer = cc.Layer.extend({
     },
     gameOver: function(){
         cc.log("Game over");
+        cc.director.runScene(new GameOverScene());
     },
     success: function(){
         cc.log("Congradulations");

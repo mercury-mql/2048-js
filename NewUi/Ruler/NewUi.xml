@@ -4,4 +4,8 @@
     <Project>NewUi_1</Project>
     <GuidesList />
   </GuidesProject>
+  <GuidesProject>
+    <Project>NewUi_2</Project>
+    <GuidesList />
+  </GuidesProject>
 </ArrayOfGuidesProject>
