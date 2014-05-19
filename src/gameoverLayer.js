@@ -16,7 +16,7 @@ var GameOverLayer = cc.Layer.extend({
         this.mainNode = cc.Node.create();
         this.addChild(this.mainNode);
 
-        var root = ccs.uiReader.widgetFromJsonFile(res.Ui2_json);
+        var root = ccs.uiReader.widgetFromJsonFile(res.Goodbye_json);
         this.mainNode.addChild(root);
 
         this.score = ccui.helper.seekWidgetByName(root, "score");

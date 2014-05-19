@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfGuidesProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <GuidesProject>
-    <Project>NewUi_1</Project>
+    <Project>Welcome</Project>
     <GuidesList />
   </GuidesProject>
   <GuidesProject>
-    <Project>NewUi_2</Project>
+    <Project>GoodBye</Project>
+    <GuidesList />
+  </GuidesProject>
+  <GuidesProject>
+    <Project>Game</Project>
     <GuidesList />
   </GuidesProject>
 </ArrayOfGuidesProject>

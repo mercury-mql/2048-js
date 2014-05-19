@@ -12,9 +12,24 @@ var GameLayer = cc.Layer.extend({
     blockArr: null,
     score: 0,
     maxnum: 2,
+    mainNode: null,
+    uiRoot: null,
+    uiScoreLabel: null,
+    pauseButton: null,
     ctor: function(){
         this._super();
         this.winSz = cc.director.getWinSize();
+        this.mainNode = cc.Node.create();
+        this.addChild(this.mainNode);
+
+        this.uiRoot = ccs.uiReader.widgetFromJsonFile(res.Game_json);
+        this.mainNode.addChild(this.uiRoot);
+
+        this.pauseButton = ccui.helper.seekWidgetByName(this.uiRoot, "pause");
+        this.pauseButton.addTouchEventListener(this.onPause, this);
+
+        this.uiScoreLabel = ccui.helper.seekWidgetByName(this.uiRoot, "scorevalue");
+        /*
         this.bg = cc.Sprite.create("#bk-little.png");
         this.bg.attr({
             x : this.winSz.width/2,
@@ -28,6 +43,7 @@ var GameLayer = cc.Layer.extend({
             y : this.winSz.height/2 - 25
         });
         this.addChild(this.sbg);
+        */
 
         this.blockArr = new Array();
 
@@ -89,7 +105,7 @@ var GameLayer = cc.Layer.extend({
                     if (!prefixDo && currentValue == prefixValue){
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[row*4+prefixIndex].updateNumber(2*prefixValue);
-                        this.score = 2 * prefixValue;
+                        this.score += 2 * prefixValue;
                         this.maxnum = (this.maxnum < this.score) ? this.score : this.maxnum;
                         prefixValue = 2*prefixValue;
                         prefixDo = true;
@@ -111,6 +127,7 @@ var GameLayer = cc.Layer.extend({
             }
         }
         this.addOneRandom(shouldAdd);
+        this.updateScoreValue();
     },
     onMoveRight: function(){
         cc.log("Move Right");
@@ -141,7 +158,7 @@ var GameLayer = cc.Layer.extend({
                     {
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[row*4+prefixIndex].updateNumber(2*currentValue);
-                        this.score = 2 * prefixValue;
+                        this.score += 2 * prefixValue;
                         this.maxnum = (this.maxnum < this.score) ? this.score : this.maxnum;
                         prefixValue = 2*currentValue;
                         prefixDo = true;
@@ -165,6 +182,7 @@ var GameLayer = cc.Layer.extend({
             }
         }
         this.addOneRandom(shouldAdd);
+        this.updateScoreValue();
     },
     onMoveUp: function(){
         cc.log("Move Up");
@@ -195,7 +213,7 @@ var GameLayer = cc.Layer.extend({
                     {
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[prefixIndex*4+col].updateNumber(2*currentValue);
-                        this.score = 2 * prefixValue;
+                        this.score += 2 * prefixValue;
                         this.maxnum = (this.maxnum < this.score) ? this.score : this.maxnum;
                         prefixValue = 2*currentValue;
                         prefixDo = true;
@@ -219,7 +237,7 @@ var GameLayer = cc.Layer.extend({
             }
         }
         this.addOneRandom(shouldAdd);
-
+        this.updateScoreValue();
     },
     onMoveDown: function(){
         cc.log("Move Down");
@@ -250,7 +268,7 @@ var GameLayer = cc.Layer.extend({
                     {
                         this.blockArr[row*4+col].updateNumber(0);
                         this.blockArr[prefixIndex*4+col].updateNumber(2*currentValue);
-                        this.score = 2 * prefixValue;
+                        this.score += 2 * prefixValue;
                         this.maxnum = (this.maxnum < this.score) ? this.score : this.maxnum;
                         prefixValue = 2*currentValue;
                         prefixDo = true;
@@ -274,7 +292,14 @@ var GameLayer = cc.Layer.extend({
             }
         }
         this.addOneRandom(shouldAdd);
+        this.updateScoreValue();
 
+    },
+    onPause: function(){
+        cc.log("On Pause");
+    },
+    updateScoreValue: function(){
+      this.uiScoreLabel.setText(this.score.toString());
     },
     getEmptyArr: function(){
         var emptyArr = new Array();
@@ -298,7 +323,7 @@ var GameLayer = cc.Layer.extend({
                     x: j*blockSz + xOffset,
                     y: i*blockSz + yOffset/4
                 });
-                this.addChild(block);
+                this.addChild(block, 1);
                 this.blockArr[i*4+j] = block;
             }
         }
@@ -330,7 +355,7 @@ var GameLayer = cc.Layer.extend({
         index = index < 0 ? 0 : index;
         var blockIndex = emptyArr[index];
         cc.log("len is %d, index is %d, blockIndex is %d", emptyArr.length, index, blockIndex);
-        var number = cc.random0To1() > 0.8 ? 4 : 2;
+        var number = cc.random0To1() > 0.95 ? 4 : 2;
         this.blockArr[blockIndex].updateNumber(number);
     },
     gameOver: function(){

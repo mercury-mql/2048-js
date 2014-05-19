@@ -10,8 +10,9 @@ var res = {
     Ui0_plist : "res/NewUi0.plist",
     Ui1_png : "res/NewUi1.png",
     Ui1_plist : "res/NewUi1.plist",
-    Ui1_json : "res/NewUi_1.ExportJson",
-    Ui2_json : "res/NewUi_2.ExportJson"
+    Welcome_json : "res/Welcome.ExportJson",
+    Game_json : "res/Game.ExportJson",
+    Goodbye_json : "res/GoodBye.ExportJson"
 };
 
 var g_resources = [
@@ -34,8 +35,9 @@ var g_resources = [
     //res.Welcome_json
     res.Ui0_plist,
     res.Ui1_plist,
-    res.Ui1_json,
-    res.Ui2_json,
+    res.Welcome_json,
+    res.Game_json,
+    res.Goodbye_json,
     //fnt
     "res/GUI/missing-font.fnt"
     //tmx
